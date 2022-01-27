@@ -8,8 +8,6 @@ class BaseConfig:
     SECRET_KEY = "2AZSMss3p5QPbcY2hBsJ"
     WTF_CSRF_SECRET_KEY = "AuwzyszU5sugKN7KZs6f"
     UPLOAD_FOLDER = str(Path(basedir, "apps", "images"))
-<<<<<<< HEAD
-<<<<<<< HEAD
     LABELS = [
         "unlabeled",
         "person",
@@ -103,10 +101,7 @@ class BaseConfig:
         "hair drier",
         "toothbrush",
     ]
-=======
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
-=======
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
+
 
 
 # BaseConfigクラスを継承してLocalConfigクラスを作成する

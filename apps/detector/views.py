@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import uuid
 from pathlib import Path
 from apps.app import db
@@ -18,17 +16,10 @@ from flask import (
 )
 # login_required, current_userをimportする
 from flask_login import current_user, login_required
-=======
-=======
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
 from apps.app import db
 from apps.crud.models import User
 from apps.detector.models import UserImage
 from flask import Blueprint, render_template, current_app, send_from_directory
-<<<<<<< HEAD
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
-=======
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
 
 # template_folderを指定する(staticは指定しない)
 dt = Blueprint("detector", __name__, template_folder="templates")
@@ -45,8 +36,6 @@ def index():
 def image_file(filename):
     return send_from_directory(current_app.config["UPLOAD_FOLDER"], filename)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 @dt.route("/upload", methods=["GET", "POST"])
 @login_required
@@ -72,7 +61,3 @@ def upload_image():
         return redirect(url_for("detector.index"))
     return render_template("detector/upload.html", form=form)
 
-=======
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
-=======
->>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
