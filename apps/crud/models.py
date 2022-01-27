@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
         db.DateTime, default=datetime.now, onupdate=datetime.now
     )
 
+    # user_images = db.relationship("UserImage", backref="user")
+
     # パスワードをセットするためのプロパティ
     @property
     def password(self):
