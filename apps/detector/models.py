@@ -1,6 +1,9 @@
 from datetime import datetime
 <<<<<<< HEAD
+<<<<<<< HEAD
 from email.policy import default
+=======
+>>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
 =======
 >>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
 from apps.app import db
@@ -15,6 +18,7 @@ class UserImage(db.Model):
     is_detected = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
 <<<<<<< HEAD
+<<<<<<< HEAD
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
 
@@ -25,6 +29,9 @@ class UserImageTag(db.Model):
     tag_name = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
+=======
+    updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
+>>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
 =======
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 >>>>>>> 5cf65cab0257c9d9dbd159eb4f4d6151e551d20a
