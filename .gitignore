@@ -1,3 +1,6 @@
+# largefile
+./apps/detector/model.pt
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,flask,vscode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,flask,vscode
