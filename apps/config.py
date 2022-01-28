@@ -103,7 +103,6 @@ class BaseConfig:
     ]
 
 
-
 # BaseConfigクラスを継承してLocalConfigクラスを作成する
 class LocalConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = f"sqlite:///{basedir / 'local.sqlite'}"
@@ -122,3 +121,6 @@ config = {
     "testing": TestingConfig,
     "local": LocalConfig,
 }
+
+
+
