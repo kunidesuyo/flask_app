@@ -21,6 +21,7 @@ from flask import (
     redirect,
     url_for,
     flash,
+    request,
 )
 # login_required, current_userをimportする
 from flask_login import current_user, login_required
@@ -117,6 +118,62 @@ def delete_image(image_id):
         current_app.logger.error(e)
         db.session.rollback()
     return redirect(url_for("detector.index"))
+
+
+@dt.route("/images/search", methods=["GET"])
+def search():
+    user_images = (
+        db.session.query(User, UserImage)
+        .join(UserImage, User.id == UserImage.user_id)
+    )
+
+    search_text = request.args.get("search")
+    user_image_tag_dict = {}
+    filtered_user_images = []
+
+    for user_image in user_images:
+        if not search_text:
+            user_image_tags = (
+                db.session.query(UserImageTag)
+                .filter(UserImageTag.user_image_id == user_image.UserImage.id)
+                .all()
+            )
+        else:
+            # 検索ワードで絞り込んだタグを取得する
+            user_image_tags = (
+                db.session.query(UserImageTag)
+                .filter(UserImageTag.user_image_id == user_image.UserImage.id)
+                .filter(UserImageTag.tag_name.like("%" + search_text + "%")).all()
+            )
+
+            # タグが見つからなかったら画像を返さない
+            if not user_image_tags:
+                continue
+
+            # タグがある場合はタグ情報を取得しなおす
+            user_image_tags = (
+                db.session.query(UserImageTag)
+                .filter(UserImageTag.user_image_id == user_image.UserImage.id)
+                .all()
+            )
+
+        # user_image_idをキーとする辞書にタグ情報をセットする
+        user_image_tag_dict[user_image.UserImage.id] = user_image_tags
+
+        # 絞り込み結果のuser_image情報を配列にセット
+        filtered_user_images.append(user_image)
+
+    delete_form = DeleteForm()
+    detector_form = DetectorForm()
+
+    return render_template(
+        "detector/index.html",
+        user_images=filtered_user_images,
+        user_image_tag_dict=user_image_tag_dict,
+        delete_form=delete_form,
+        detector_form=detector_form
+    )
+
 
 
 
